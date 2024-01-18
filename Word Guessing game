@@ -1,0 +1,32 @@
+import random
+
+words =['apple', 'banana', 'peach']
+random_wrd = random.choice(words)
+word_len = len(random_wrd)
+print(f"secret reveiled guys: {random_wrd}")
+lives = 6
+display = []
+for _ in range(word_len):
+    display += "_"
+
+end_game = False
+
+while not end_game:
+    guess = input("guess the word: ")
+    for position in range(word_len):
+        letter = random_wrd[position]
+
+        if letter == guess:
+            display[position] = letter
+    if guess not in random_wrd:
+        lives -= 1
+    if lives == 0:
+            end_game = True
+            print(f"You lose the word is : {random_wrd}")
+
+
+    if "_" not in display:
+        end_game = True
+        print("You win")
+    print(display)
+    
