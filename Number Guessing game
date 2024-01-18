@@ -1,0 +1,39 @@
+import random
+
+
+number = random.randint(1,100)
+easy_mode = 10
+hard_mode = 5
+def score(guess,number,turn):
+    if guess > number:
+        print("Too high!")
+        return turn - 1
+    elif guess < number:
+        print("Too low!")
+        return turn - 1
+    else:
+        
+        print("You Won! you guess the right number:", number)
+                
+def game_challenge():
+    level = input("write 'easy' or 'hard' yo want your challenge: ")
+    if level == 'easy':
+        return easy_mode
+    else:
+        return hard_mode
+        
+def main_game():
+    print("Welcome to the number Guessing game")
+    turn = game_challenge()
+    end = False
+    while not end:
+        guess = int(input("guess the number from 1 to 100: "))
+        turn = score(guess,number,turn)
+        if turn == 0:
+            print(f"You lose the number is:", number)
+            end = True
+            
+main_game()
+    
+    
+    
